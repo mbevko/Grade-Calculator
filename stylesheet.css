@@ -1,0 +1,11 @@
+.grade_calc_body {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+    width: 150px;
+    height: 20px;
+    border: solid black 1px;
+  }
+  
