@@ -4,8 +4,11 @@
 }
 
 .box {
-    width: 150px;
-    height: 20px;
-    border: solid black 1px;
-  }
+  width: 150px;
+  height: 20px;
+  border: solid black 1px;
+}
+
+p {
   
+}
