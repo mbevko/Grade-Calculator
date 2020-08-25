@@ -1,9 +1,8 @@
 let numQues = document.querySelector(".num_of_ques");
 let calcGrades = document.querySelector(".calc_grades");
+let gradeBody = document.querySelector(".grade_calc_body");
 let numQuesVal = numQues.value;
-
 let letterValue = "";
-
 
 function colOne() {
   let gradeBody = document.querySelector(".grade_calc_body");
@@ -11,6 +10,37 @@ function colOne() {
   gradeBody.appendChild(div);
   div.append;
   div.className = "box";
+  div.innerHTML = counter; 
+};
+
+function colTwo() {
+  let gradeBody = document.querySelector(".grade_calc_body");
+  let div = document.createElement("div");
+  gradeBody.appendChild(div);
+  div.append;
+  div.className = "box";
+
+  let getGrade = (numQues.value - counter ) / numQues.value * 100;
+  div.innerHTML = Math.round(getGrade) + "%";  
+
+};
+
+function colThree() {
+  let gradeBody = document.querySelector(".grade_calc_body");
+  let div = document.createElement("div");
+  gradeBody.appendChild(div);
+  div.append;
+  div.className = "box";
+  div.innerHTML = counter; 
+};
+
+function colFour() {
+  let gradeBody = document.querySelector(".grade_calc_body");
+  let div = document.createElement("div");
+  gradeBody.appendChild(div);
+  div.append;
+  div.className = "box";
+
   let getGrade = (numQues.value - counter ) / numQues.value * 100;
   if(getGrade >= 90){
     letterValue = "A"
@@ -24,26 +54,56 @@ function colOne() {
     letterValue = "F"
   }
 
-  div.innerHTML = counter + " " + Math.round(getGrade) + " " + letterValue; 
+  div.innerHTML = letterValue;  
 
 };
 
-let counter = 1;
+
+let counterTwo = numQues.value;
+let counter = 0;
 calcGrades.addEventListener('click', () => {
-  let numQuesVal = numQues.value;
-  for(let i = 0; i < numQuesVal; i++){
-    i.length = colOne();
-    i.length = counter++;
-  }
+  if (numQues.hasAttribute("disabled", ""))
+    {
+      numQues.removeAttribute("disabled", "")
+      numQues.value = "";
+      location.reload();
+      calcGrades.innerText = "Calculate Grades";
+    }else{
+      numQues.setAttribute("disabled", "");
+      calcGrades.innerText = "Clear Grades";
+      counter = 0;
+      let numQuesVal = numQues.value;
+      for(let i = 0; i <= numQuesVal; i++){
+        i.length = colOne();
+        i.length = colTwo();
+        i.length = colThree();
+        i.length = colFour();
+        i.length = counter++;
+      };
+    }
 });
 
 
-var MyApp = {}; // Globally scoped object
 
-function foo(){
-    MyApp.color = 'green';
+
+
+
+/*
+  numQues.addEventListener('input', () => {
+if(numQues.value <= 0 || NaN){
+  calcGrades.setAttribute("disabled", "")
+}else{
+  calcGrades.removeAttribute("disabled", "")
 }
+  });
 
-function bar(){
-    alert(MyApp.color); // Alerts 'green'
-} 
+  if(numQues.value <= 0 || NaN){
+    calcGrades.setAttribute("disabled", "")
+  }else{
+    calcGrades.removeAttribute("disabled", "")
+  };
+
+
+  //remove text after submit. Add third row. Style.
+
+*/
