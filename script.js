@@ -19,22 +19,12 @@ function colTwo() {
   gradeBody.appendChild(div);
   div.append;
   div.className = "box";
-
   let getGrade = (numQues.value - counter ) / numQues.value * 100;
   div.innerHTML = Math.round(getGrade) + "%";  
 
 };
 
 function colThree() {
-  let gradeBody = document.querySelector(".grade_calc_body");
-  let div = document.createElement("div");
-  gradeBody.appendChild(div);
-  div.append;
-  div.className = "box";
-  div.innerHTML = counter; 
-};
-
-function colFour() {
   let gradeBody = document.querySelector(".grade_calc_body");
   let div = document.createElement("div");
   gradeBody.appendChild(div);
@@ -58,7 +48,7 @@ function colFour() {
 
 };
 
-
+let cT = numQues.value;
 let counterTwo = numQues.value;
 let counter = 0;
 calcGrades.addEventListener('click', () => {
@@ -66,8 +56,11 @@ calcGrades.addEventListener('click', () => {
     {
       numQues.removeAttribute("disabled", "")
       numQues.value = "";
-      location.reload();
       calcGrades.innerText = "Calculate Grades";
+      let div = document.querySelectorAll(".grade_calc_body div");
+      for(i = 0; i < div.length; i++){
+      div[i].remove();
+      }
     }else{
       numQues.setAttribute("disabled", "");
       calcGrades.innerText = "Clear Grades";
@@ -77,18 +70,18 @@ calcGrades.addEventListener('click', () => {
         i.length = colOne();
         i.length = colTwo();
         i.length = colThree();
-        i.length = colFour();
         i.length = counter++;
       };
     }
 });
 
+numQues.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+  event.preventDefault();  
+calcGrades.click();
+}
+});
 
-
-
-
-
-/*
   numQues.addEventListener('input', () => {
 if(numQues.value <= 0 || NaN){
   calcGrades.setAttribute("disabled", "")
@@ -102,8 +95,3 @@ if(numQues.value <= 0 || NaN){
   }else{
     calcGrades.removeAttribute("disabled", "")
   };
-
-
-  //remove text after submit. Add third row. Style.
-
-*/
